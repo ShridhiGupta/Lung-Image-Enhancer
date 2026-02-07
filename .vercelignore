@@ -1,0 +1,13 @@
+# Ignore backend files for Vercel deployment
+backend/
+dataset/
+*.py
+*.pth
+.git
+.gitignore
+README.md
+.env
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store

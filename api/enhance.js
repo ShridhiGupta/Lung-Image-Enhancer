@@ -1,8 +1,7 @@
 // Vercel Serverless Function for X-Ray Enhancement
-const { createCanvas } = require('canvas');
 const sharp = require('sharp');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -37,7 +36,7 @@ export default async function handler(req, res) {
     console.error('Enhancement error:', error);
     return res.status(500).json({ error: 'Failed to enhance image' });
   }
-}
+};
 
 async function processImage(base64Image, type) {
   try {

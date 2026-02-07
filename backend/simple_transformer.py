@@ -8,6 +8,7 @@ import io
 import base64
 import numpy as np
 import cv2
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -228,5 +229,6 @@ def health_check():
 if __name__ == '__main__':
     print("Starting Simple Transformer X-Ray Enhancement Server...")
     print("Features: Simplified transformer with attention mechanism")
-    print("Server running on http://localhost:5000")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    print(f"Server running on port {port}")
+    app.run(debug=False, host='0.0.0.0', port=port)

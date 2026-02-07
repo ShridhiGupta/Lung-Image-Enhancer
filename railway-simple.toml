@@ -1,0 +1,8 @@
+# Simplified Railway Configuration
+[build]
+  builder = "NIXPACKS"
+
+[deploy]
+  startCommand = "cd backend && python simple_transformer.py"
+  healthcheckPath = "/health"
+  restartPolicyType = "ON_FAILURE"

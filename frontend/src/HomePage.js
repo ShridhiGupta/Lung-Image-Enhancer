@@ -9,6 +9,7 @@ function HomePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [isDragging, setIsDragging] = useState(false);
+  const [activeTab, setActiveTab] = useState('report');
 
   const handleImageSelect = (event) => {
     const file = event.target.files[0];
@@ -152,6 +153,10 @@ function HomePage() {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  };
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
   };
 
   return (
@@ -441,105 +446,119 @@ function HomePage() {
 
                 <div className="detailed-analysis">
                   <div className="analysis-tabs">
-                    <div className="tab active">Medical Report</div>
-                    <div className="tab">Disease Information</div>
+                    <div 
+                      className={`tab ${activeTab === 'report' ? 'active' : ''}`}
+                      onClick={() => handleTabClick('report')}
+                    >
+                      Medical Report
+                    </div>
+                    <div 
+                      className={`tab ${activeTab === 'info' ? 'active' : ''}`}
+                      onClick={() => handleTabClick('info')}
+                    >
+                      Disease Information
+                    </div>
                   </div>
                   
                   <div className="tab-content">
-                    <div className="medical-report-enhanced">
-                      <div className="report-header">
-                        <h4>Medical Analysis Report</h4>
-                        <button 
-                          onClick={() => downloadReport(diseasePrediction.report)}
-                          className="download-report-btn"
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14,2 14,8 20,8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10,9 9,9 8,9"/>
-                          </svg>
-                          Download Report
-                        </button>
+                    {activeTab === 'report' && (
+                      <div className="medical-report-enhanced">
+                        <div className="report-header">
+                          <h4>Medical Analysis Report</h4>
+                          <button 
+                            onClick={() => downloadReport(diseasePrediction.report)}
+                            className="download-report-btn"
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                              <polyline points="14,2 14,8 20,8"/>
+                              <line x1="16" y1="13" x2="8" y2="13"/>
+                              <line x1="16" y1="17" x2="8" y2="17"/>
+                              <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                            Download Report
+                          </button>
+                        </div>
+                        <div className="report-content-enhanced">
+                          <pre>{diseasePrediction.report}</pre>
+                        </div>
                       </div>
-                      <div className="report-content-enhanced">
-                        <pre>{diseasePrediction.report}</pre>
-                      </div>
-                    </div>
+                    )}
 
-                    <div className="disease-info-enhanced">
-                      <div className="info-cards-grid">
-                        <div className="info-card">
-                          <div className="info-card-header">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                            </svg>
-                            <h5>Description</h5>
-                          </div>
-                          <p>{diseasePrediction.disease_info.description}</p>
-                        </div>
-
-                        <div className="info-card">
-                          <div className="info-card-header">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                            </svg>
-                            <h5>Symptoms</h5>
-                          </div>
-                          <p>{diseasePrediction.disease_info.symptoms}</p>
-                        </div>
-
-                        <div className="info-card">
-                          <div className="info-card-header">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M3 12h18m-9-9v18"/>
-                              <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <h5>Treatment</h5>
-                          </div>
-                          <p>{diseasePrediction.disease_info.treatment}</p>
-                        </div>
-
-                        <div className="info-card severity-card-enhanced">
-                          <div className="info-card-header">
-                            <div className="severity-icon-wrapper">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                                <line x1="12" y1="9" x2="12" y2="13"/>
-                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    {activeTab === 'info' && (
+                      <div className="disease-info-enhanced">
+                        <div className="info-cards-grid">
+                          <div className="info-card">
+                            <div className="info-card-header">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                               </svg>
+                              <h5>Description</h5>
                             </div>
-                            <h5>Risk Assessment</h5>
+                            <p>{diseasePrediction.disease_info.description}</p>
                           </div>
-                          <div className="severity-level-container">
-                            <div className={`severity-indicator-enhanced ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
-                              <div className="severity-level-header">
-                                <span className="severity-label">Severity Level</span>
-                                <div className="severity-dots">
-                                  {[...Array(5)].map((_, i) => (
-                                    <div 
-                                      key={i} 
-                                      className={`severity-dot ${i < getSeverityLevel(diseasePrediction.disease_info.severity) ? 'active' : ''}`}
-                                    />
-                                  ))}
+
+                          <div className="info-card">
+                            <div className="info-card-header">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                              </svg>
+                              <h5>Symptoms</h5>
+                            </div>
+                            <p>{diseasePrediction.disease_info.symptoms}</p>
+                          </div>
+
+                          <div className="info-card">
+                            <div className="info-card-header">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M3 12h18m-9-9v18"/>
+                                <circle cx="12" cy="12" r="10"/>
+                              </svg>
+                              <h5>Treatment</h5>
+                            </div>
+                            <p>{diseasePrediction.disease_info.treatment}</p>
+                          </div>
+
+                          <div className="info-card severity-card-enhanced">
+                            <div className="info-card-header">
+                              <div className="severity-icon-wrapper">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                  <line x1="12" y1="9" x2="12" y2="13"/>
+                                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                </svg>
+                              </div>
+                              <h5>Risk Assessment</h5>
+                            </div>
+                            <div className="severity-level-container">
+                              <div className={`severity-indicator-enhanced ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
+                                <div className="severity-level-header">
+                                  <span className="severity-label">Severity Level</span>
+                                  <div className="severity-dots">
+                                    {[...Array(5)].map((_, i) => (
+                                      <div 
+                                        key={i} 
+                                        className={`severity-dot ${i < getSeverityLevel(diseasePrediction.disease_info.severity) ? 'active' : ''}`}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                                <div className="severity-value">
+                                  {diseasePrediction.disease_info.severity}
+                                </div>
+                                <div className="severity-description">
+                                  {getSeverityDescription(diseasePrediction.disease_info.severity)}
+                                </div>
+                                <div className="severity-action">
+                                  {getSeverityAction(diseasePrediction.disease_info.severity)}
                                 </div>
                               </div>
-                              <div className="severity-value">
-                                {diseasePrediction.disease_info.severity}
-                              </div>
-                              <div className="severity-description">
-                                {getSeverityDescription(diseasePrediction.disease_info.severity)}
-                              </div>
-                              <div className="severity-action">
-                                {getSeverityAction(diseasePrediction.disease_info.severity)}
-                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </section>

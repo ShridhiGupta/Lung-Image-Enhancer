@@ -273,3 +273,5 @@ datasets/
 enhanced_*
 training_*.png
 loss_*.png
+
+.early.coverage

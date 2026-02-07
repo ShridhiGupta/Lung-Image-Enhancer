@@ -62,8 +62,18 @@ class SimpleTransformerXRayEnhancer(nn.Module):
         
         return enhanced
 
-# Initialize the model
+# Initialize and load trained model
 model = SimpleTransformerXRayEnhancer()
+model_path = 'quick_trained_model.pth'
+
+try:
+    model.load_state_dict(torch.load(model_path, map_location='cpu'))
+    print(f"✅ Loaded trained model from {model_path}")
+except FileNotFoundError:
+    print(f"⚠️  No trained model found at {model_path}, using untrained model")
+except Exception as e:
+    print(f"⚠️  Error loading model: {e}, using untrained model")
+
 model.eval()
 
 def enhance_xray_transformer(image_data):

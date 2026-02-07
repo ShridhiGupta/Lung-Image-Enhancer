@@ -1,0 +1,19 @@
+{
+  "name": "healthcare-hackathon-ai",
+  "version": "1.0.0",
+  "description": "AI-Powered Medical X-Ray Enhancement",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && python simple_transformer.py",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "sharp": "^0.32.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0"
+  }
+}

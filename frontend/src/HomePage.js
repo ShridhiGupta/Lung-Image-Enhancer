@@ -53,7 +53,12 @@ function HomePage() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/enhance', {
+      // Use environment-aware API URL
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/enhance' 
+        : 'http://localhost:5000/enhance';
+      
+      const response = await axios.post(apiUrl, {
         image: selectedImage
       });
 
@@ -64,7 +69,10 @@ function HomePage() {
         });
       }
     } catch (err) {
-      setError('Failed to enhance image. Please make sure the backend is running.');
+      const errorMessage = process.env.NODE_ENV === 'production' 
+        ? 'Failed to enhance image. Please try again.'
+        : 'Failed to enhance image. Please make sure the backend is running.';
+      setError(errorMessage);
       console.error('Enhancement error:', err);
     } finally {
       setLoading(false);

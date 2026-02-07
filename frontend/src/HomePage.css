@@ -234,6 +234,12 @@
   letter-spacing: 0.05em;
 }
 
+.upload-button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
 .upload-button::before {
   content: '';
   position: absolute;
@@ -255,19 +261,13 @@
   box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
 }
 
+.upload-button:hover svg {
+  transform: scale(1.1);
+}
+
 .upload-button:active {
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
-}
-
-.upload-button::after {
-  content: '📤';
-  font-size: 1.2rem;
-  transition: transform 0.2s ease;
-}
-
-.upload-button:hover::after {
-  transform: scale(1.2) rotate(5deg);
 }
 
 .upload-button input {
@@ -278,6 +278,7 @@
   color: #94a3b8;
   font-size: 0.875rem;
   margin-top: 1.5rem;
+  font-weight: 500;
 }
 
 /* Results Section */

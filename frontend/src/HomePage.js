@@ -230,10 +230,15 @@ function HomePage() {
                       <line x1="12" y1="3" x2="12" y2="15"/>
                     </svg>
                   </div>
-                  <h2>Upload X-Ray Image</h2>
+                  <h2>Upload Your X-Ray</h2>
                   <p>Drag and drop your X-ray image here or click to browse</p>
                   <label htmlFor="image-upload" className="upload-button">
-                    Choose File
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="17,8 12,3 7,8"/>
+                      <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    Select X-Ray Image
                     <input
                       id="image-upload"
                       type="file"
@@ -241,7 +246,7 @@ function HomePage() {
                       onChange={handleImageSelect}
                     />
                   </label>
-                  <p className="supported-formats">Supported formats: PNG, JPG, JPEG (Max 10MB)</p>
+                  <p className="supported-formats">Supported: PNG, JPG, JPEG (Maximum 10MB)</p>
                 </div>
               </div>
             </div>

@@ -341,65 +341,65 @@ function HomePage() {
                 </div>
               </div>
             </div>
-          </section>
 
-          {/* Disease Prediction Section */}
-          {diseasePrediction && diseasePrediction.success && (
-            <section className="disease-prediction-section">
-              <h2 className="section-title">🏥 Disease Analysis</h2>
-              <div className="prediction-container">
-                <div className="prediction-header">
-                  <div className="top-prediction">
-                    <h3>Primary Diagnosis</h3>
-                    <div className={`diagnosis-badge ${getConfidenceClass(diseasePrediction.top_prediction.confidence)}`}>
-                      <span className="diagnosis-name">{diseasePrediction.top_prediction.disease}</span>
-                      <span className="confidence-score">{diseasePrediction.top_prediction.percentage}</span>
+            {/* Disease Prediction Section */}
+            {diseasePrediction && diseasePrediction.success && (
+              <section className="disease-prediction-section">
+                <h2 className="section-title">🏥 Disease Analysis</h2>
+                <div className="prediction-container">
+                  <div className="prediction-header">
+                    <div className="top-prediction">
+                      <h3>Primary Diagnosis</h3>
+                      <div className={`diagnosis-badge ${getConfidenceClass(diseasePrediction.top_prediction.confidence)}`}>
+                        <span className="diagnosis-name">{diseasePrediction.top_prediction.disease}</span>
+                        <span className="confidence-score">{diseasePrediction.top_prediction.percentage}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="prediction-details">
-                  <div className="all-predictions">
-                    <h4>All Predictions</h4>
-                    <div className="prediction-list">
-                      {diseasePrediction.predictions.map((pred, index) => (
-                        <div key={index} className="prediction-item">
-                          <span className="disease-name">{pred.disease}</span>
-                          <div className="confidence-bar">
-                            <div 
-                              className="confidence-fill" 
-                              style={{ width: `${pred.confidence * 100}%` }}
-                            ></div>
+                  <div className="prediction-details">
+                    <div className="all-predictions">
+                      <h4>All Predictions</h4>
+                      <div className="prediction-list">
+                        {diseasePrediction.predictions.map((pred, index) => (
+                          <div key={index} className="prediction-item">
+                            <span className="disease-name">{pred.disease}</span>
+                            <div className="confidence-bar">
+                              <div 
+                                className="confidence-fill" 
+                                style={{ width: `${pred.confidence * 100}%` }}
+                              ></div>
+                            </div>
+                            <span className="confidence-percentage">{pred.percentage}</span>
                           </div>
-                          <span className="confidence-percentage">{pred.percentage}</span>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="medical-report">
-                    <h4>Medical Report</h4>
-                    <div className="report-content">
-                      <pre>{diseasePrediction.report}</pre>
+                    <div className="medical-report">
+                      <h4>Medical Report</h4>
+                      <div className="report-content">
+                        <pre>{diseasePrediction.report}</pre>
+                      </div>
+                      <button 
+                        onClick={() => downloadReport(diseasePrediction.report)}
+                        className="download-report-btn"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                          <polyline points="14,2 14,8 20,8"/>
+                          <line x1="16" y1="13" x2="8" y2="13"/>
+                          <line x1="16" y1="17" x2="8" y2="17"/>
+                          <polyline points="10,9 9,9 8,9"/>
+                        </svg>
+                        Download Report
+                      </button>
                     </div>
-                    <button 
-                      onClick={() => downloadReport(diseasePrediction.report)}
-                      className="download-report-btn"
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14,2 14,8 20,8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                        <polyline points="10,9 9,9 8,9"/>
-                      </svg>
-                      Download Report
-                    </button>
                   </div>
                 </div>
-              </div>
-            </section>
-          )}
+              </section>
+            )}
+          </section>
         )}
       </main>
 

@@ -345,83 +345,145 @@ function HomePage() {
             {/* Disease Prediction Section */}
             {diseasePrediction && diseasePrediction.success && (
               <section className="disease-prediction-section">
-                <h2 className="section-title">🏥 Disease Analysis</h2>
-                <div className="prediction-container">
-                  <div className="prediction-header">
-                    <div className="top-prediction">
+                <div className="prediction-header">
+                  <h2 className="section-title">Disease Analysis Results</h2>
+                  <div className="confidence-indicator">
+                    <span className="confidence-label">AI Confidence</span>
+                    <div className="confidence-visual">
+                      <div 
+                        className="confidence-circle" 
+                        style={{ 
+                          background: `conic-gradient(#10b981 ${diseasePrediction.top_prediction.confidence * 360}deg, #e5e7eb 0deg)` 
+                        }}
+                      >
+                        <span className="confidence-percentage">
+                          {diseasePrediction.top_prediction.percentage}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="diagnosis-main">
+                  <div className="primary-diagnosis-card">
+                    <div className="diagnosis-header">
                       <h3>Primary Diagnosis</h3>
-                      <div className={`diagnosis-badge ${getConfidenceClass(diseasePrediction.top_prediction.confidence)}`}>
-                        <span className="diagnosis-name">{diseasePrediction.top_prediction.disease}</span>
-                        <span className="confidence-score">{diseasePrediction.top_prediction.percentage}</span>
+                      <div className={`severity-badge ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
+                        {diseasePrediction.disease_info.severity}
+                      </div>
+                    </div>
+                    <div className="diagnosis-content">
+                      <div className="disease-name-large">
+                        {diseasePrediction.top_prediction.disease}
+                      </div>
+                      <div className="disease-description">
+                        {diseasePrediction.disease_info.description}
                       </div>
                     </div>
                   </div>
 
-                  <div className="prediction-details">
-                    <div className="all-predictions">
-                      <h4>All Predictions</h4>
-                      <div className="prediction-list">
-                        {diseasePrediction.predictions.map((pred, index) => (
-                          <div key={index} className="prediction-item">
-                            <span className="disease-name">{pred.disease}</span>
-                            <div className="confidence-bar">
-                              <div 
-                                className="confidence-fill" 
-                                style={{ width: `${pred.confidence * 100}%` }}
-                              ></div>
-                            </div>
-                            <span className="confidence-percentage">{pred.percentage}</span>
+                  <div className="predictions-visualization">
+                    <h4>All Predictions</h4>
+                    <div className="prediction-chart">
+                      {diseasePrediction.predictions.map((pred, index) => (
+                        <div key={index} className="prediction-bar-item">
+                          <div className="prediction-info">
+                            <span className="disease-label">{pred.disease}</span>
+                            <span className="prediction-confidence">{pred.percentage}</span>
                           </div>
-                        ))}
-                      </div>
+                          <div className="prediction-bar-container">
+                            <div 
+                              className="prediction-bar-fill" 
+                              style={{ 
+                                width: `${pred.confidence * 100}%`,
+                                backgroundColor: index === 0 ? '#10b981' : '#6b7280'
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
+                  </div>
+                </div>
 
-                    <div className="medical-report">
-                      <h4>Medical Report</h4>
-                      <div className="report-content">
+                <div className="detailed-analysis">
+                  <div className="analysis-tabs">
+                    <div className="tab active">Medical Report</div>
+                    <div className="tab">Disease Information</div>
+                  </div>
+                  
+                  <div className="tab-content">
+                    <div className="medical-report-enhanced">
+                      <div className="report-header">
+                        <h4>Medical Analysis Report</h4>
+                        <button 
+                          onClick={() => downloadReport(diseasePrediction.report)}
+                          className="download-report-btn"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14,2 14,8 20,8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10,9 9,9 8,9"/>
+                          </svg>
+                          Download Report
+                        </button>
+                      </div>
+                      <div className="report-content-enhanced">
                         <pre>{diseasePrediction.report}</pre>
                       </div>
-                      <button 
-                        onClick={() => downloadReport(diseasePrediction.report)}
-                        className="download-report-btn"
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                          <polyline points="14,2 14,8 20,8"/>
-                          <line x1="16" y1="13" x2="8" y2="13"/>
-                          <line x1="16" y1="17" x2="8" y2="17"/>
-                          <polyline points="10,9 9,9 8,9"/>
-                        </svg>
-                        Download Report
-                      </button>
                     </div>
 
-                    {/* Disease Information Card */}
-                    {diseasePrediction.disease_info && (
-                      <div className="disease-info-card">
-                        <h4>Disease Information</h4>
-                        <div className="info-grid">
-                          <div className="info-item">
-                            <span className="info-label">Description:</span>
-                            <span className="info-value">{diseasePrediction.disease_info.description}</span>
+                    <div className="disease-info-enhanced">
+                      <div className="info-cards-grid">
+                        <div className="info-card">
+                          <div className="info-card-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                            <h5>Description</h5>
                           </div>
-                          <div className="info-item">
-                            <span className="info-label">Symptoms:</span>
-                            <span className="info-value">{diseasePrediction.disease_info.symptoms}</span>
+                          <p>{diseasePrediction.disease_info.description}</p>
+                        </div>
+
+                        <div className="info-card">
+                          <div className="info-card-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            </svg>
+                            <h5>Symptoms</h5>
                           </div>
-                          <div className="info-item">
-                            <span className="info-label">Treatment:</span>
-                            <span className="info-value">{diseasePrediction.disease_info.treatment}</span>
+                          <p>{diseasePrediction.disease_info.symptoms}</p>
+                        </div>
+
+                        <div className="info-card">
+                          <div className="info-card-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M3 12h18m-9-9v18"/>
+                              <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <h5>Treatment</h5>
                           </div>
-                          <div className="info-item">
-                            <span className="info-label">Severity:</span>
-                            <span className={`info-value severity ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
-                              {diseasePrediction.disease_info.severity}
-                            </span>
+                          <p>{diseasePrediction.disease_info.treatment}</p>
+                        </div>
+
+                        <div className="info-card severity-card">
+                          <div className="info-card-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                              <line x1="12" y1="9" x2="12" y2="13"/>
+                              <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            <h5>Severity Level</h5>
+                          </div>
+                          <div className={`severity-indicator-large ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
+                            {diseasePrediction.disease_info.severity}
                           </div>
                         </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
               </section>

@@ -176,32 +176,32 @@ class SimpleDiseasePredictor:
 ║                    MEDICAL ANALYSIS REPORT                     ║
 ╚══════════════════════════════════════════════════════════════╝
 
-📅 ANALYSIS DATE: {self.get_current_date()}
-🏥 PRIMARY DIAGNOSIS: {disease}
-📊 CONFIDENCE LEVEL: {confidence * 100:.1f}% ({confidence_level})
-🔍 ASSESSMENT SEVERITY: {info['severity']}
+DATE: {self.get_current_date()}
+PRIMARY DIAGNOSIS: {disease}
+CONFIDENCE LEVEL: {confidence * 100:.1f}% ({confidence_level})
+ASSESSMENT SEVERITY: {info['severity']}
 
 ═══════════════════════════════════════════════════════════════
 
-📋 DETAILED FINDINGS:
+DETAILED FINDINGS:
 ─────────────────────────────────────────────────────────────────
 {info['description']}
 
-⚕️  CLINICAL PRESENTATION:
+CLINICAL PRESENTATION:
 ─────────────────────────────────────────────────────────────────
 {info['symptoms']}
 
-💊 RECOMMENDED TREATMENT:
+RECOMMENDED TREATMENT:
 ─────────────────────────────────────────────────────────────────
 {info['treatment']}
 
-🎯 NEXT STEPS:
+NEXT STEPS:
 ─────────────────────────────────────────────────────────────────
 {recommendation}
 
 ═══════════════════════════════════════════════════════════════
 
-📈 ALL PREDICTIONS (Confidence Scores):
+ALL PREDICTIONS (Confidence Scores):
 ─────────────────────────────────────────────────────────────────
 """
         
@@ -214,7 +214,7 @@ class SimpleDiseasePredictor:
         report += f"""
 ═══════════════════════════════════════════════════════════════
 
-🔬 IMAGE ANALYSIS:
+IMAGE ANALYSIS:
 ─────────────────────────────────────────────────────────────────
 """
         
@@ -228,7 +228,7 @@ class SimpleDiseasePredictor:
         report += f"""
 ═══════════════════════════════════════════════════════════════
 
-⚠️  IMPORTANT DISCLAIMER:
+IMPORTANT DISCLAIMER:
 ─────────────────────────────────────────────────────────────────
 This is an AI-assisted preliminary analysis and should NOT replace
 professional medical diagnosis. Always consult with a qualified 

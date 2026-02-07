@@ -1,0 +1,15 @@
+Lung Disease Dataset - 5 Types
+========================================
+
+Source: Kaggle - omkarmanohardalvi/lungs-disease-dataset-4-types
+Organized in: E:\Hackathon\dataset\lungs_disease
+Total images: 10095
+
+Categories:
+  Normal: 2013 images
+  Bacterial Pneumonia: 2009 images
+  Viral Pneumonia: 2008 images
+  Tuberculosis: 2034 images
+  Corona Virus Disease: 2031 images
+
+Splits: train, val, test (preserved in filenames)

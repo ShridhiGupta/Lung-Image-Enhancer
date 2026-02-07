@@ -9,6 +9,7 @@ import base64
 import numpy as np
 import cv2
 import os
+from disease_predictor import disease_service
 
 app = Flask(__name__)
 CORS(app)
@@ -206,14 +207,38 @@ def enhance_image():
         enhanced_v1 = enhance_xray_transformer(image_data)
         enhanced_v2 = create_traditional_enhancement(image_data)
         
+        # Get disease prediction
+        disease_prediction = disease_service.predict_disease(image_data)
+        
         if enhanced_v1 and enhanced_v2:
             return jsonify({
                 'enhanced_v1': f'data:image/png;base64,{enhanced_v1}',
                 'enhanced_v2': f'data:image/png;base64,{enhanced_v2}',
+                'disease_prediction': disease_prediction,
                 'message': 'X-ray images enhanced successfully with transformer and traditional methods'
             })
         else:
             return jsonify({'error': 'Failed to enhance images'}), 500
+            
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/predict-disease', methods=['POST'])
+def predict_disease():
+    try:
+        data = request.get_json()
+        image_data = data.get('image')
+        
+        if not image_data:
+            return jsonify({'error': 'No image data provided'}), 400
+        
+        # Get disease prediction
+        disease_prediction = disease_service.predict_disease(image_data)
+        
+        return jsonify({
+            'disease_prediction': disease_prediction,
+            'message': 'Disease prediction completed successfully'
+        })
             
     except Exception as e:
         return jsonify({'error': str(e)}), 500

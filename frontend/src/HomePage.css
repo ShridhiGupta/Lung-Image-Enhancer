@@ -610,6 +610,74 @@
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
+/* Disease Information Card */
+.disease-info-card {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.disease-info-card h4 {
+  color: #065f46;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.info-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 0.375rem;
+  border-left: 4px solid #10b981;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.info-value {
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.severity.none {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.severity.mild {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.severity.moderate {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.severity.severe {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.severity.critical {
+  color: #991b1b;
+  font-weight: 600;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .logo h1 {

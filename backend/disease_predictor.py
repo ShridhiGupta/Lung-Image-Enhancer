@@ -4,6 +4,8 @@ import torchvision.transforms as transforms
 from PIL import Image
 import numpy as np
 import cv2
+import io
+import base64
 
 class LungDiseasePredictor(nn.Module):
     def __init__(self, num_classes=5):

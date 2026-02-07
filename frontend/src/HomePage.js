@@ -395,6 +395,33 @@ function HomePage() {
                         Download Report
                       </button>
                     </div>
+
+                    {/* Disease Information Card */}
+                    {diseasePrediction.disease_info && (
+                      <div className="disease-info-card">
+                        <h4>Disease Information</h4>
+                        <div className="info-grid">
+                          <div className="info-item">
+                            <span className="info-label">Description:</span>
+                            <span className="info-value">{diseasePrediction.disease_info.description}</span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Symptoms:</span>
+                            <span className="info-value">{diseasePrediction.disease_info.symptoms}</span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Treatment:</span>
+                            <span className="info-value">{diseasePrediction.disease_info.treatment}</span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Severity:</span>
+                            <span className={`info-value severity ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
+                              {diseasePrediction.disease_info.severity}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </section>

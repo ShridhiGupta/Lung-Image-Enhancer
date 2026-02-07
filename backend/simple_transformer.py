@@ -9,7 +9,7 @@ import base64
 import numpy as np
 import cv2
 import os
-from disease_predictor import disease_service
+from simple_disease_predictor import simple_disease_service
 
 app = Flask(__name__)
 CORS(app)
@@ -208,7 +208,7 @@ def enhance_image():
         enhanced_v2 = create_traditional_enhancement(image_data)
         
         # Get disease prediction
-        disease_prediction = disease_service.predict_disease(image_data)
+        disease_prediction = simple_disease_service.predict_disease(image_data)
         
         if enhanced_v1 and enhanced_v2:
             return jsonify({
@@ -233,7 +233,7 @@ def predict_disease():
             return jsonify({'error': 'No image data provided'}), 400
         
         # Get disease prediction
-        disease_prediction = disease_service.predict_disease(image_data)
+        disease_prediction = simple_disease_service.predict_disease(image_data)
         
         return jsonify({
             'disease_prediction': disease_prediction,

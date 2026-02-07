@@ -308,21 +308,51 @@
   flex-wrap: wrap;
 }
 
-.enhance-btn {
+.enhance-btn,
+.reset-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
-  color: white;
-  border: none;
   border-radius: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 40px;
+}
+
+.enhance-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
+  color: white;
+  border: none;
   box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #10b981;
+  border: 2px solid #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+.enhance-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.enhance-btn:hover::before {
+  left: 100%;
 }
 
 .enhance-btn:hover:not(:disabled) {
@@ -345,70 +375,40 @@
   transform: scale(1.1);
 }
 
-.download-report-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.download-report-btn::before {
+.reset-btn::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
   transition: left 0.5s ease;
 }
 
-.download-report-btn:hover::before {
+.reset-btn:hover::before {
   left: 100%;
 }
 
-.download-report-btn:hover {
+.reset-btn:hover {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-color: #059669;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
-  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.2);
 }
 
-.download-report-btn:active {
+.reset-btn:active {
   transform: translateY(0);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
 }
 
-.download-report-btn svg {
+.reset-btn svg {
   transition: transform 0.2s ease;
 }
 
-.download-report-btn:hover svg {
+.reset-btn:hover svg {
   transform: scale(1.1);
-}
-
-.reset-btn {
-  background: rgba(255, 255, 255, 0.9);
-  color: #64748b;
-  border: 2px solid #e2e8f0;
-}
-
-.reset-btn:hover {
-  background: white;
-  border-color: #3b82f6;
-  color: #3b82f6;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
 }
 
 .spinner {

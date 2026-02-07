@@ -109,6 +109,39 @@ function HomePage() {
     return 'very-low-confidence';
   };
 
+  const getSeverityLevel = (severity) => {
+    const levels = {
+      'None': 0,
+      'Mild': 1,
+      'Moderate': 2,
+      'Severe': 3,
+      'Critical': 4
+    };
+    return levels[severity] || 0;
+  };
+
+  const getSeverityDescription = (severity) => {
+    const descriptions = {
+      'None': 'No immediate health risks detected',
+      'Mild': 'Minor health concerns, monitor symptoms',
+      'Moderate': 'Significant health issues require attention',
+      'Severe': 'Serious condition needs immediate care',
+      'Critical': 'Life-threatening, emergency care required'
+    };
+    return descriptions[severity] || 'Unknown severity level';
+  };
+
+  const getSeverityAction = (severity) => {
+    const actions = {
+      'None': '✓ No action needed',
+      'Mild': '📅 Schedule routine check-up',
+      'Moderate': '🏥 Consult doctor soon',
+      'Severe': '🚑 Seek medical attention',
+      'Critical': '🆘 Emergency care needed'
+    };
+    return actions[severity] || 'Consult healthcare provider';
+  };
+
   const downloadReport = (report) => {
     const blob = new Blob([report], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -469,17 +502,40 @@ function HomePage() {
                           <p>{diseasePrediction.disease_info.treatment}</p>
                         </div>
 
-                        <div className="info-card severity-card">
+                        <div className="info-card severity-card-enhanced">
                           <div className="info-card-header">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                              <line x1="12" y1="9" x2="12" y2="13"/>
-                              <line x1="12" y1="17" x2="12.01" y2="17"/>
-                            </svg>
-                            <h5>Severity Level</h5>
+                            <div className="severity-icon-wrapper">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                              </svg>
+                            </div>
+                            <h5>Risk Assessment</h5>
                           </div>
-                          <div className={`severity-indicator-large ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
-                            {diseasePrediction.disease_info.severity}
+                          <div className="severity-level-container">
+                            <div className={`severity-indicator-enhanced ${diseasePrediction.disease_info.severity.toLowerCase().replace(' ', '-')}`}>
+                              <div className="severity-level-header">
+                                <span className="severity-label">Severity Level</span>
+                                <div className="severity-dots">
+                                  {[...Array(5)].map((_, i) => (
+                                    <div 
+                                      key={i} 
+                                      className={`severity-dot ${i < getSeverityLevel(diseasePrediction.disease_info.severity) ? 'active' : ''}`}
+                                    />
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="severity-value">
+                                {diseasePrediction.disease_info.severity}
+                              </div>
+                              <div className="severity-description">
+                                {getSeverityDescription(diseasePrediction.disease_info.severity)}
+                              </div>
+                              <div className="severity-action">
+                                {getSeverityAction(diseasePrediction.disease_info.severity)}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

@@ -269,3 +269,4 @@ For issues and questions:
 ---
 
 **Built by Shridhi Gupta**
+**It's a part of a hackathon**

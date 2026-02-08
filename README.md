@@ -265,3 +265,7 @@ For issues and questions:
 **Built for Healthcare Hackathon 2024**  
 🏥 **AI-Powered Medical Image Enhancement**  
 🔬 **Transforming Medical Diagnosis Through Technology**
+
+---
+
+**Built by Shridhi Gupta**

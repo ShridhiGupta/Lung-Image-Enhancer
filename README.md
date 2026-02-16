@@ -16,7 +16,7 @@ A sophisticated healthcare application that uses transformer-based AI to enhance
 
 ### 📊 Real Dataset
 - **10,095 Medical Images**: Real lung X-ray dataset with 5 categories
-- **Multiple Conditions**: Normal, Bacterial Pneumonia, Viral Pneumonia, Tuberculosis, Corona Virus
+- **Multiple Conditions**: Normal, Bacterial Pneumonia, Viral Pneumonia, Tuberculosis, Coronavirus
 - **Training Ready**: Organized dataset for model improvement
 
 ## 🚀 Quick Start

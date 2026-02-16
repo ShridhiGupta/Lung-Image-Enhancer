@@ -1,4 +1,4 @@
-# 🏥 X-Ray Lung Enhancer - AI-Powered Medical Image Enhancement
+# X-Ray Lung Enhancer - AI-Powered Medical Image Enhancement
 
 A sophisticated healthcare application that uses transformer-based AI to enhance lung X-ray images for better medical diagnosis and analysis.
 

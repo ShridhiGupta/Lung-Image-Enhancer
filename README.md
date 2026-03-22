@@ -15,7 +15,7 @@ A sophisticated healthcare application that uses transformer-based AI to enhance
 - **Responsive Layout**: Works seamlessly on desktop and mobile devices
 
 ### 📊 Real Dataset
-- **10,095 Medical Images**: Real lung X-ray dataset with 5 categories
+- **10,095 Medical Images**: Real lung X-ray dataset with 5 categories -> **omkarmanohardalvi/lungs-disease-dataset-4-types**
 - **Multiple Conditions**: Normal, Bacterial Pneumonia, Viral Pneumonia, Tuberculosis, Coronavirus
 - **Training Ready**: Organized dataset for model improvement
 
@@ -40,7 +40,7 @@ cd backend
 pip install -r requirements.txt
 ```
 
-#### Train the AI Model (Optional - Quick trained model included)
+#### Train the AI Model (Optional - Quick-trained model included)
 ```bash
 python train_quick.py
 ```

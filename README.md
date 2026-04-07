@@ -2,24 +2,24 @@
 
 A sophisticated healthcare application that uses transformer-based AI to enhance lung X-ray images for better medical diagnosis and analysis.
 
-## ✨ Features
+## Features
 
-### 🧠 AI-Powered Enhancement
+### AI-Powered Enhancement
 - **Transformer Model**: Advanced vision transformer with self-attention mechanism
 - **Medical-Grade Processing**: CLAHE, edge preservation, and noise reduction
 - **Dual Enhancement**: Both AI-transformer and traditional enhancement methods
 
-### 🎨 Healthcare-Themed UI
+### Healthcare-Themed UI
 - **Professional Design**: Clean, calming interface suitable for medical environments
 - **Trust Indicators**: HIPAA compliance, secure processing, clinical validation badges
 - **Responsive Layout**: Works seamlessly on desktop and mobile devices
 
-### 📊 Real Dataset
+### Real Dataset
 - **10,095 Medical Images**: Real lung X-ray dataset with 5 categories -> **omkarmanohardalvi/lungs-disease-dataset-4-types**
 - **Multiple Conditions**: Normal, Bacterial Pneumonia, Viral Pneumonia, Tuberculosis, Coronavirus
 - **Training Ready**: Organized dataset for model improvement
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -68,7 +68,7 @@ npm start
 ### 4. Access the Application
 Open your browser and navigate to: `http://localhost:3000`
 
-## 📋 Detailed Setup Instructions
+## Detailed Setup Instructions
 
 ### Backend Setup Details
 
@@ -120,7 +120,7 @@ Open your browser and navigate to: `http://localhost:3000`
    npm start
    ```
 
-## 🎯 How to Use the Application
+## How to Use the Application
 
 ### 1. Upload X-Ray Image
 - **Drag & Drop**: Simply drag your X-ray image onto the upload area
@@ -141,7 +141,7 @@ Open your browser and navigate to: `http://localhost:3000`
 - Click the **"Download"** button on each enhanced image
 - Save for medical analysis or documentation
 
-## 🧠 Model Architecture
+## Model Architecture
 
 ### Transformer-Based Enhancement
 - **Input**: 224x224 RGB X-ray images
@@ -155,7 +155,7 @@ Open your browser and navigate to: `http://localhost:3000`
 - **Loss Function**: Mean Squared Error (MSE)
 - **Optimizer**: Adam with learning rate scheduling
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Healthcare-Hackathon-AI/
@@ -179,7 +179,7 @@ Healthcare-Hackathon-AI/
 └── README.md                   # This file
 ```
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -228,7 +228,7 @@ Open `http://localhost:3000` in browser - should load the healthcare interface
 - **Professional Interface**: Suitable for healthcare environments
 - **Quality Assurance**: Multiple enhancement methods for reliability
 
-## 📈 Performance Metrics
+## Performance Metrics
 
 ### Model Performance
 - **Training Loss**: < 0.02 (well below target of 0.9)
@@ -240,7 +240,7 @@ Open `http://localhost:3000` in browser - should load the healthcare interface
 - **Noise Reduction**: Medical-grade denoising
 - **Edge Preservation**: Maintains diagnostic details
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -248,11 +248,11 @@ Open `http://localhost:3000` in browser - should load the healthcare interface
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
+## License
 
 This project is built for medical research and healthcare applications. Please ensure compliance with local medical device regulations when using in production environments.
 
-## 🆘 Support
+## Support
 
 For issues and questions:
 - Check the troubleshooting section above
@@ -263,8 +263,8 @@ For issues and questions:
 ---
 
 **Built for Healthcare Hackathon 2024**  
-🏥 **AI-Powered Medical Image Enhancement**  
-🔬 **Transforming Medical Diagnosis Through Technology**
+**AI-Powered Medical Image Enhancement**  
+**Transforming Medical Diagnosis Through Technology**
 
 ---
 

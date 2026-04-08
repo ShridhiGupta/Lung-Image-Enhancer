@@ -214,9 +214,9 @@ Expected response:
 ```
 
 #### Frontend Health
-Open `http://localhost:3000` in browser - should load the healthcare interface
+Open `http://localhost:3000` in the browser - should load the healthcare interface
 
-## 🏥 Healthcare Compliance
+## Healthcare Compliance
 
 ### Privacy & Security
 - **Local Processing**: All image processing happens locally

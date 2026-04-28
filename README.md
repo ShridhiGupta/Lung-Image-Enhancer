@@ -270,3 +270,4 @@ For issues and questions:
 
 **Built by Shridhi Gupta**
 **It's a part of a hackathon**
+**Got selected in AI Healthcare Hackathon, Ugekistan**

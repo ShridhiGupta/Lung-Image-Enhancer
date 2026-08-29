@@ -1,6 +1,6 @@
 # X-Ray Lung Enhancer - System Architecture Diagram
 
-## 🏗️ HIGH-LEVEL ARCHITECTURE
+## HIGH-LEVEL ARCHITECTURE
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -203,7 +203,7 @@ USER ACTION
 └─────────────────┘
 ```
 
-## 🏥 MEDICAL AI PIPELINE
+## MEDICAL AI PIPELINE
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -270,7 +270,7 @@ INPUT: X-Ray Image (Original)
 OUTPUT: Enhanced Images + Medical Report + Disease Prediction
 ```
 
-## 🌐 DEPLOYMENT ARCHITECTURE
+## DEPLOYMENT ARCHITECTURE
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -331,7 +331,7 @@ CONTAINER ARCHITECTURE
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 🔧 TECHNOLOGY STACK ARCHITECTURE
+## TECHNOLOGY STACK ARCHITECTURE
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -384,7 +384,7 @@ AI/ML STACK
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 📊 PERFORMANCE ARCHITECTURE
+## PERFORMANCE ARCHITECTURE
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
